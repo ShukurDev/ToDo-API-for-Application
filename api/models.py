@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Icon(models.Model):
     icon = models.ImageField(null=True, blank=True, verbose_name='new_icon')
@@ -21,7 +20,7 @@ class Task(models.Model):
     title = models.CharField(max_length=300, null=True, blank=True, verbose_name='new_task')
     text = models.TextField(null=True, blank=True, verbose_name='note')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='task_created')
-    date = models.DateTimeField(choices=Date, null=True, blank=True)
+    date = models.CharField(choices=Date, null=True, blank=True, max_length=200)
 
     def __str__(self):
         return self.title
@@ -29,6 +28,7 @@ class Task(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=200, null=True)
+    date_created = models.DateTimeField(auto_now=True)
 
 
 class List(models.Model):
